@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/predict.css">
+    <title>Car Resale Predicted Value</title>
+</head>
+
+<body>
+    <center>
+    <section class="header">
+        <nav>
+            <a href="/"> <img src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960" alt="Car" width="350" height="200">
+            </a>
+        </nav>
+        <div class="text-box">
+            <h1>The Predicted Car Resale Price is </h1>
+            <h1>Rs:{{predict}}</h1>
+            <form action="" method="get" onsubmit="return sendMail(this);">
+                <input type="email" name="email" id="email">
+                <button type="submit">Send Mail</button>
+              </form>
+            <script>
+              function sendMail(form){          
+                const url = '/send_mail?email=' + form.email.value + "&reg_year=" + "{{reg_year}}" + "&powerps=" + "{{powerps}}" + "&kms=" + "{{kms}}" + "&reg_month=" + "{{reg_month}}" + "&gearbox=" + "{{gearbox}}" + "&damage=" + "{{damage}}" + "&model=" + "{{model}}" + "&brand =" + "{{brand }}" + "&fuel_type =" + "{{fuel_type}}";
+                fetch(url).then(alert('Mail Sent!!!')).catch(err => console.log(err));
+                return false;
+              }
+            </script>
+        </div>
+    </section>
+</center>
+</body>
+
+</html>
